@@ -4,11 +4,12 @@
 
 Getting different categories of geo data from [HONG KONG GEODATA STORE](https://geodata.gov.hk/gs/), and display them using open map [Mapbox](https://www.mapbox.com/).
 
-
 Current data:
 1. Education - Kindergartens, primary and secondary schools
 2. Sports - Ball games, water sports and sports centre
 3. Social welfare - Services for disabilities, minoriy community, child and elderly
+
+[Demo](https://demching.github.io/hk-geodata-maps/)
 
 ### Source of data
 1. HONG KONG GEODATA STORE
