@@ -1,0 +1,24 @@
+{
+    "id": "sport",
+    "key": "name",
+    "groups": {
+        "ball": {
+            "tc": "球類運動",
+            "sc": "球类运动",
+            "en": "Ball Games"
+        },
+        "water": {
+            "icon": "swimming",
+            "tc": "水上活動",
+            "sc": "水上活动",
+            "en": "Water Sports"
+        },
+        "facility": {
+            "tc": "設施",
+            "sc": "设施",
+            "en": "Facilities"
+        }
+    },
+    "icon": "jogging",
+    "template": "<div class='header'><div>{{district}} {{dataset}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{opening:}}</div><div>{{email:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div></div>"
+}

@@ -1,0 +1,97 @@
+{
+    "ab9ddde8-4b24-4543-8b33-c7c2fe72a337": {
+        "tc": "展能中心",
+        "sc": "展能中心",
+        "en": "Day Activity Centre"
+    },
+    "c3150960-1e04-478e-9b11-41c2d488d48f": {
+        "tc": "嚴重殘疾人士護理院",
+        "sc": "严重残疾人士护理院",
+        "en": "Care and Attention Home for Severely Disabled Persons"
+    },
+    "a9f0b1ac-a78c-48f1-943d-6f59ef2be442": {
+        "tc": "視障人士傳達部",
+        "sc": "视障人士传达部",
+        "en": "Communication and Information Service Unit for Visually Impaired Persons"
+    },
+    "84746aef-0930-4e0e-a146-2f8fdf21eb63": {
+        "tc": "日間社區康復中心",
+        "sc": "日间社区康复中心",
+        "en": "Community Rehabilitation Day Centre"
+    },
+    "2aa0452b-ecb0-4961-a707-0fe9a0169cfc": {
+        "tc": "社區復康網絡",
+        "sc": "社区复康网络",
+        "en": "Community Rehabilitation Network"
+    },
+    "53e50ae7-56e9-4f6f-aee6-db869652e1b7": {
+        "tc": "殘疾人士地區支援中心",
+        "sc": "残疾人士地区支援中心",
+        "en": "District Support Centre for Persons with Disabilities"
+    },
+    "a9cb1e37-756d-431e-b0fe-ba2cda8b4f46": {
+        "tc": "中度弱智人士宿舍",
+        "sc": "中度弱智人士宿舍",
+        "en": "Hostel for Moderately Mentally Handicapped Persons"
+    },
+    "1b9ff8da-fa7c-4476-90f9-40d42618cb11": {
+        "tc": "嚴重弱智人士宿舍",
+        "sc": "严重弱智人士宿舍",
+        "en": "Hostel for Severely Mentally Handicapped Persons"
+    },
+    "3e53b8a7-158b-472e-9b20-1bfc51d7494b": {
+        "tc": "嚴重肢體傷殘人士宿舍",
+        "sc": "严重肢体伤残人士宿舍",
+        "en": "Hostel for Severely Physically Handicapped Persons"
+    },
+    "4be241f5-04a0-4a66-b511-3d9d2584cdf8": {
+        "tc": "嚴重肢體傷殘兼弱智人士宿舍",
+        "sc": "严重肢体伤残兼弱智人士宿舍",
+        "en": "Hostel for Severely Physically Handicapped Persons with Mental Handicap"
+    },
+    "d7ca51fd-7d62-485f-8cde-4f470fe5b5da": {
+        "tc": "綜合康復服務中心",
+        "sc": "綜合康復服務中心",
+        "en": "Integrated Rehabilitation Services Centre"
+    },
+    "7bd167a9-4bed-49ee-9e51-6400be4c574b": {
+        "tc": "綜合職業康復服務中心",
+        "sc": "综合职业康复服务中心",
+        "en": "Integrated Vocational Rehabilitation Services Centre"
+    },
+    "a50729e5-d8b0-45a8-9987-eb36ffbf790d": {
+        "tc": "聽覺受損人士綜合服務中心",
+        "sc": "听觉受损人士综合服务中心",
+        "en": "Multi-service Centre for Hearing Impaired Persons"
+    },
+    "ff77b9b4-520f-45f3-9806-e44c9680fa04": {
+        "tc": "視障人士康復及訓練中心",
+        "sc": "视障人士康复及训练中心",
+        "en": "Rehabilitation and Training Centre for Visually Impaired Persons"
+    },
+    "3661f466-4e78-4385-a3f4-1fb535bf6052": {
+        "tc": "殘疾人士社交及康樂中心",
+        "sc": "残疾人士社交及康乐中心",
+        "en": "Social & Recreational Centre for the Disabled"
+    },
+    "42ff9d05-c2da-4ef1-a958-94d15d2b14a0": {
+        "tc": "精神健康綜合社區中心",
+        "sc": "精神健康综合社区中心",
+        "en": "Integrated Community Centre for Mental Wellness"
+    },
+    "b84bd95e-1f04-4c55-b88e-04a273e09921": {
+        "tc": "庇護工場",
+        "sc": "庇护工场",
+        "en": "Sheltered Workshop"
+    },
+    "333d8e16-e951-486b-9649-2fed2297a7e8": {
+        "tc": "長期護理院",
+        "sc": "长期护理院",
+        "en": "Long Stay Care Home"
+    },
+    "855677e1-c3c7-453a-a12c-abd83d61a42a": {
+        "tc": "四肢癱瘓病人過渡期護理支援中心",
+        "sc": "四肢瘫痪病人过渡期护理支援中心",
+        "en": "Transitional Care and Support Centre for Tetraplegic Patients"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "b545518d-efe1-446d-8525-530b23047aba": {
+        "tc": "資助中學",
+        "sc": "资助中学",
+        "en": "Aided Secondary Schools"
+    },
+    "c0a69b19-bf9d-47be-9aa7-286363a6d869": {
+        "tc": "按額津貼中學",
+        "sc": "按额津贴中学",
+        "en": "Caput Secondary Schools"
+    },
+    "e4d0a272-720c-4f58-9632-85e7e840a0fb": {
+        "tc": "直接資助計劃中學",
+        "sc": "直接资助计划中学",
+        "en": "Direct Subsidy Scheme Secondary Schools"
+    },
+    "5ed5e429-415f-4a4d-8321-de664a6e884f": {
+        "tc": "英基學校協會（中學）",
+        "sc": "英基学校协会（中学）",
+        "en": "English Schools Foundation (Secondary)"
+    },
+    "c669790c-a633-4bc4-88a1-3d29e146b792": {
+        "tc": "官立中學",
+        "sc": "官立中学",
+        "en": "Government Secondary Schools"
+    },
+    "b819c93e-d17b-46b9-8b30-03302c7f77b9": {
+        "tc": "國際學校（中學）",
+        "sc": "国际学校（中学）",
+        "en": "International Schools (Secondary)"
+    },
+    "af986350-70c6-4c14-8ee8-78f03d6839d1": {
+        "tc": "私立中學（日校/夜校）",
+        "sc": "私立中学（日校/夜校）",
+        "en": "Private Secondary Schools (Day/Evening)"
+    }
+}

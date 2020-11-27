@@ -1,0 +1,61 @@
+{
+    "f9ca5378-c23d-4c9c-9ea5-198c40298fd7": {
+        "icon": "badminton",
+        "tc": "羽毛球場",
+        "sc": "羽毛球场",
+        "en": "Badminton Courts"
+    },
+    "fb65b9aa-05d9-4768-a8b1-148072180ba1": {
+        "icon": "basketball",
+        "tc": "籃球場",
+        "sc": "篮球场",
+        "en": "Basketball Courts"
+    },
+    "d9e16fa2-262b-4dd9-b553-0ee99957a670": {
+        "tc": "草地滾球場",
+        "sc": "草地滚球场",
+        "en": "Bowling Greens"
+    },
+    "5054697b-fd48-43cd-8369-c5a6fa61e1c2": {
+        "icon": "football",
+        "tc": "草地球場",
+        "sc": "草地球场",
+        "en": "Grass Pitches"
+    },
+    "e12e1f78-58c8-4eeb-ae83-bc2fa72edd91": {
+        "icon": "football",
+        "tc": "硬地球場",
+        "sc": "硬地球场",
+        "en": "Hard-surface Pitches"
+    },
+    "815169af-54c5-458f-9aa4-536aa9223406": {
+        "icon": "tennis",
+        "tc": "壁球場",
+        "sc": "壁球场",
+        "en": "Squash Courts"
+    },
+    "fcb93faf-3ede-4bcd-9c65-7ef4a63e7f79": {
+        "icon": "football",
+        "tc": "大球場",
+        "sc": "大球场",
+        "en": "Stadia"
+    },
+    "5c080cec-4777-43b7-8476-81ea6462f834": {
+        "icon": "table-tennis",
+        "tc": "乒乓球檯",
+        "sc": "乒乓球台",
+        "en": "Table Tennis Tables"
+    },
+    "c6a51001-fd45-4f19-931e-f6c6347b3aca": {
+        "icon": "tennis",
+        "tc": "網球場",
+        "sc": "网球场",
+        "en": "Tennis Courts"
+    },
+    "66d2a48c-e8e9-4183-b4d6-6cc3171dcbd8": {
+        "icon": "golf",
+        "tc": "高爾夫球設施",
+        "sc": "高尔夫球设施",
+        "en": "Golf Facilities"
+    }
+}

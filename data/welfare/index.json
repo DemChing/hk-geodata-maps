@@ -1,0 +1,47 @@
+{
+    "id": "welfare",
+    "key": "name",
+    "groups": {
+        "elderly": {
+            "icon": "elderly",
+            "tc": "長者",
+            "sc": "长者",
+            "en": "Elderly"
+        },
+        "child": {
+            "icon": "child",
+            "tc": "幼兒",
+            "sc": "幼儿",
+            "en": "Child"
+        },
+        "minority": {
+            "tc": "少數群體",
+            "sc": "少数群体",
+            "en": "Minority Communities"
+        },
+        "disability": {
+            "icon": "disability",
+            "tc": "肢體 / 精神殘疾人士",
+            "sc": "肢体 / 精神残疾人士",
+            "en": "Physical / Mental Handicapped Persons"
+        },
+        "hostel": {
+            "icon": "hostel",
+            "tc": "宿舍",
+            "sc": "宿舍",
+            "en": "Hostel"
+        },
+        "centre": {
+            "tc": "服務中心",
+            "sc": "服务中心",
+            "en": "Service Centres"
+        },
+        "unit": {
+            "tc": "服務單位",
+            "sc": "服务单位",
+            "en": "Services Units"
+        }
+    },
+    "icon": "help",
+    "template": "<div class='header'><div>{{district}} {{dataset}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{opening:}}</div><div>{{email:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div></div>"
+}

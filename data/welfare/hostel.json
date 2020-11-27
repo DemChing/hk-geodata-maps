@@ -1,0 +1,22 @@
+{
+    "e86edcd4-9184-4c95-b16e-9b424938b7e0": {
+        "tc": "感化院舍",
+        "sc": "感化院舍",
+        "en": "Correctional Home"
+    },
+    "4c823729-3982-48a5-9de7-d4b098d494f9": {
+        "tc": "中途宿舍",
+        "sc": "中途宿舍",
+        "en": "Halfway House"
+    },
+    "c26e8bda-72c4-4b1e-a145-1d3ea1ad5bd9": {
+        "tc": "設有特殊名額的中途宿舍",
+        "sc": "设有特殊名额的中途宿舍",
+        "en": "Halfway House with Special Provision"
+    },
+    "e1bf312a-51f6-4093-a81d-55ef9046d908": {
+        "tc": "輔助宿舍",
+        "sc": "辅助宿舍",
+        "en": "Supported Hostel"
+    }
+}

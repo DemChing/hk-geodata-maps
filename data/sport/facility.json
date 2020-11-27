@@ -1,0 +1,45 @@
+{
+    "59a2216c-7051-4965-818a-2a323cc79205": {
+        "icon": "fitness",
+        "tc": "健身室",
+        "sc": "健身室",
+        "en": "Fitness Rooms"
+    },
+    "f62e419f-035c-4d7c-ab68-02bc5a5b871c": {
+        "tc": "多用途體育館",
+        "sc": "多用途体育馆",
+        "en": "Multipurpose Stadia"
+    },
+    "8a4d3d78-97fa-4c6e-90f5-f4a47a567673": {
+        "tc": "其他康體設施",
+        "sc": "其他康体设施",
+        "en": "Other Recreation & Sports Facilities"
+    },
+    "d1a2e8e0-8636-41e9-b664-0e64b86860a2": {
+        "tc": "體育館",
+        "sc": "体育馆",
+        "en": "Sports Centres"
+    },
+    "beba93e9-c747-47d9-84d8-2cd8e701bfbb": {
+        "tc": "運動攀登設施",
+        "sc": "运动攀登设施",
+        "en": "Sports Climbing Facilities"
+    },
+    "ea5e29ec-a308-44aa-a40f-2cb97db71814": {
+        "tc": "運動場",
+        "sc": "运动场",
+        "en": "Sports Grounds"
+    },
+    "e6541f7e-31be-4ed9-9304-c621ebe79400": {
+        "icon": "horse-riding",
+        "tc": "騎術學校",
+        "sc": "骑术学校",
+        "en": "Horse Riding Schools"
+    },
+    "90433a14-808f-45a0-9694-8be4c43359f6": {
+        "icon": "bicycle",
+        "tc": "單車場",
+        "sc": "单车场",
+        "en": "Cycling Sites"
+    }
+}

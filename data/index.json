@@ -1,0 +1,17 @@
+{
+    "education": {
+        "tc": "教育",
+        "sc": "教育",
+        "en": "Education"
+    },
+    "sport": {
+        "tc": "運動",
+        "sc": "运动",
+        "en": "Sports"
+    },
+    "welfare": {
+        "tc": "社會福利",
+        "sc": "社会福利",
+        "en": "Social Welfare"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "41f53d43-7d82-4e44-9a9e-d4e9d1c4781c": {
+        "tc": "資助小學",
+        "sc": "资助小学",
+        "en": "Aided Primary Schools"
+    },
+    "5ea5b3c6-ef95-44cc-a9fc-43f2d69e56f1": {
+        "tc": "直接資助計劃小學",
+        "sc": "直接资助计划小学",
+        "en": "Direct Subsidy Scheme Primary Schools"
+    },
+    "007fcfcb-24e2-4f3a-8b6f-cddf50728bc0": {
+        "tc": "英基學校協會（小學）",
+        "sc": "英基学校协会（小学）",
+        "en": "English Schools Foundation (Primary)"
+    },
+    "e55b1a7d-e52e-4f1a-903f-ab2edb93ebbb": {
+        "tc": "官立小學",
+        "sc": "官立小学",
+        "en": "Government Primary Schools"
+    },
+    "c64e5114-a331-4f5d-af74-06bc71694225": {
+        "tc": "國際學校（小學）",
+        "sc": "国际学校（小学）",
+        "en": "International Schools (Primary)"
+    },
+    "dd62b320-2a29-430b-926f-d86c99341c31": {
+        "tc": "私立小學",
+        "sc": "私立小学",
+        "en": "Private Primary Schools"
+    }
+}

@@ -1,0 +1,38 @@
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRJN3TM3C7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-HRJN3TM3C7');
+
+    </script>
+    <title>Hong Kong Geo Data Maps | 香港地理數據地圖</title>
+    <meta name="description" content="Get information of different facilities including location, opening hours and contact information. 取得不同設施的位置、開放時間、聯絡方式等資料。">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <link href='index.css' rel='stylesheet' />
+</head>
+
+<body>
+    <div id='map'></div>
+    <div id='toolbar'>
+        <a href='https://www.buymeacoffee.com/demching'>
+            <button class="data-map-button" id="bmc">
+                <div class='msg'>Support Me</div>
+            </button>
+        </a>
+        <a href='https://github.com/DemChing/hk-geodata-maps'>
+            <button class="data-map-button" id="git">
+                <div class='msg'>Fork Me</div>
+            </button>
+        </a>
+    </div>
+    <script src='index.js'></script>
+</body>

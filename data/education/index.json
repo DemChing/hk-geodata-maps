@@ -1,0 +1,29 @@
+{
+    "id": "education",
+    "key": "name",
+    "groups": {
+        "kindergarten": {
+            "icon": "child",
+            "tc": "幼稚園 / 幼兒學校",
+            "sc": "幼稚园 / 幼儿学校",
+            "en": "Kindergartens / Nursery Schools"
+        },
+        "primary": {
+            "tc": "小學",
+            "sc": "小学",
+            "en": "Primary Schools"
+        },
+        "secondary": {
+            "tc": "中學",
+            "sc": "中学",
+            "en": "Secondary Schools"
+        },
+        "other": {
+            "tc": "其他院校",
+            "sc": "其他院校",
+            "en": "Other Institutions"
+        }
+    },
+    "icon": "graduation",
+    "template": "<div class='header'><div>{{district}} {{prop1}} {{prop2}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{session}} {{gender}}</div><div>{{prop3:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div></div>"
+}

@@ -1,0 +1,310 @@
+* {
+    font-family: sans-serif;
+    color: #333;
+}
+
+canvas:focus {
+    outline: none;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#title-container {
+    position: absolute;
+    left: 10px;
+    bottom: 40px;
+}
+
+#title {
+    max-width: 450px;
+    min-width: 350px;
+    background: #fff7;
+    border-radius: 10px;
+    font-size: 16;
+    font-weight: bold;
+    padding: 10px 20px;
+    opacity: 0.7;
+    transition: all 0.2s linear;
+    box-sizing: border-box;
+}
+
+#title-container:hover #title,
+#title-container.active #title {
+    background: #fff;
+    opacity: 1;
+}
+
+#title #attribution,
+#title #copyright {
+    font-weight: initial;
+    font-size: 10;
+}
+
+#title div {
+    margin: 10px 0;
+}
+
+#title-container #toggle-title {
+    display: none;
+    width: 30px;
+    height: 30px;
+    background-image: url('img/question.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    bottom: 40px;
+    border-radius: 50%;
+}
+
+#collapse-title {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+    background-image: url('img/minimize.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+#toolbar {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 35px;
+}
+
+#toolbar button {
+    border-radius: 50%;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#toolbar button .msg {
+    opacity: 0;
+    transition: all 0.2s linear;
+    position: relative;
+    left: -95px;
+    text-align: right;
+    width: 80px;
+}
+
+#toolbar button:hover .msg {
+    opacity: 1;
+}
+
+#toolbar button#bmc {
+    background-image: url('img/bmc.svg');
+}
+
+#toolbar button#git {
+    background-image: url('img/git.svg');
+    background-size: 22px;
+}
+
+#title-container.force-collapse #collapse-title,
+#title-container.force-collapse:not(.active) #title {
+    display: none;
+}
+
+#title-container.force-collapse:not(.active) #toggle-title {
+    display: block;
+}
+
+#loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    background: #fff9;
+}
+
+#loading div {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24;
+    text-align: center;
+}
+
+#map[lang="0"] [lang="0"],
+#map[lang="1"] [lang="1"] {
+    display: unset;
+}
+
+*[lang]:not(#map) {
+    display: none;
+}
+
+span[tag]+span[tag]::before {
+    content: '|';
+    padding: 0 10px;
+    vertical-align: text-bottom;
+}
+
+span[type=value] a {
+    color: #08f;
+}
+
+span[lang] {
+    color: currentColor;
+}
+
+.mapboxgl-popup {
+    max-width: 300px !important;
+    min-width: 250px;
+}
+
+.mapboxgl-popup div[lang] div {
+    margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mapboxgl-popup div[lang] div.header {
+    margin-bottom: 10px;
+}
+
+.mapboxgl-popup h3 {
+    margin: 0.3rem 0 0.75rem 0;
+    font-size: 18;
+}
+
+.mapboxgl-popup div[lang] div>span[tag] {
+    font-size: 14;
+}
+
+.mapboxgl-popup span[tag=address] span[type=value] {
+    color: #08f;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.mapboxgl-popup-close-button {
+    font-size: 20;
+}
+
+button.data-map-button {
+    display: inline-block;
+    position: fixed;
+    height: 30px;
+    outline: none;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 0 0 0 2px #0001;
+    line-height: 1.3;
+    transition: all 0.2s linear;
+    z-index: 10;
+}
+
+button#toggle-language {
+    top: 10px;
+    right: 50px;
+    width: 60px;
+}
+
+button#toggle-layers {
+    top: 10px;
+    left: 10px;
+    width: 30px;
+}
+
+button.data-map-button:hover {
+    background: #eee;
+}
+
+#layers-container {
+    position: absolute;
+    top: 45px;
+    left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 0 2px #0001;
+    max-height: 500px;
+    overflow: auto;
+    width: 350px;
+}
+
+.catalogue .parent {
+    font-size: 16;
+    font-weight: 700;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.catalogue .child {
+    font-size: 14;
+    padding: 5px 0 0 10px;
+    cursor: pointer;
+}
+
+.catalogue .list {
+    padding: 5px 0 0 30px;
+    cursor: pointer;
+}
+
+.catalogue .list.download {
+    color: #777;
+}
+
+.catalogue .list.visible {
+    font-weight: bold;
+}
+
+.catalogue .list.hidden {
+    font-weight: bold;
+    color: #f37;
+    text-decoration: line-through;
+}
+
+.catalogue img {
+    width: 14px;
+    padding: 0px 5px 0px 15px;
+    vertical-align: middle;
+    float: right;
+}
+
+@media only screen and (max-width: 600px) {
+    #layers-container {
+        width: 300px;
+    }
+
+    #title-container #title {
+        display: none;
+    }
+
+    #title-container.active #title {
+        width: 300px;
+        display: block;
+    }
+
+    #title-container:not(.active) #toggle-title {
+        display: block;
+    }
+
+    #collapse-title {
+        display: none;
+    }
+}
