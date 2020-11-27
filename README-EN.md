@@ -9,7 +9,11 @@ Current data:
 2. Sports - Ball games, water sports and sports centre
 3. Social welfare - Services for disabilities, minoriy community, child and elderly
 
+### Demo
 [Demo](https://demching.github.io/hk-geodata-maps/)
+
+Tutorial
+![Tutorial](demo.png)
 
 ### Source of data
 1. HONG KONG GEODATA STORE

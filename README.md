@@ -9,7 +9,11 @@
 2. 運動 - 球類活動、水上活動、體育館
 3. 社會福利 - 針對殘疾人士、少數族裔、幼童及長者等提供的服務
 
+### Demo
 [Demo](https://demching.github.io/hk-geodata-maps/)
+
+教學
+![教學](demo.png)
 
 ### 資料來源
 1. 香港地理數據站
