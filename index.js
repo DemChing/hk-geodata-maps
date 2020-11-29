@@ -2,7 +2,8 @@ const Language = [{
     code: 'en',
     lang: 'en',
     text: 'English',
-    title: 'Hong Kong Geo Data Map: ',
+    title: 'Hong Kong Geo Data Map',
+    desc: 'Get the information of different facilities for you.',
     copyright: '© The Government of the HKSAR. All rights reserved.',
     credit: 'Source: The Government of the Hong Kong Special Administrative Region, HONG KONG GEODATA STORE',
     loading: 'Loading',
@@ -10,7 +11,8 @@ const Language = [{
     code: 'zh-Hant',
     lang: 'tc',
     text: '繁體',
-    title: '香港地理資料地圖：',
+    title: '香港地理資料地圖',
+    desc: '為你提供不同設施的資訊。',
     copyright: '© 香港特區政府。保留所有權利。',
     credit: '資料來源：香港特別行政區政府、香港地理數據站',
     loading: '載入中'
@@ -24,6 +26,34 @@ function getJSON(url) {
             resolve(res || {})
         })
     })
+}
+
+function getType(type) {
+    return getJSON(`data/${type}/index.json`)
+        .then(res => {
+            let id = res.id;
+            window.DataCatalogue = window.DataCatalogue || {};
+            if (!(id in window.DataCatalogue)) window.DataCatalogue[id] = {};
+            window.DataCatalogue[id] = {
+                ...window.DataCatalogue[id],
+                ...res
+            }
+            if ($('#layers-container').length) drawLayers();
+        })
+}
+
+function getSubType(type, sub) {
+    return getJSON(`data/${type}/${sub}.json`)
+        .then(res => {
+            window.DataCatalogue = window.DataCatalogue || {};
+            if (!(type in window.DataCatalogue)) window.DataCatalogue[type] = {
+                groups: {
+                    [sub]: {}
+                }
+            };
+            window.DataCatalogue[type].groups[sub].list = res;
+            if ($('#layers-container').length) drawLayers();
+        })
 }
 
 function startMap() {
@@ -63,14 +93,16 @@ function getLocalesNames(locale, key, lang) {
 }
 
 function buildPopup(template, props, locale) {
-    let keys = template.match(/\{\{[a-z0-9:]+\}\}/g).map(key => key.replace(/[{}]/g, '')),
+    let keys = template.match(/\{\{[a-z0-9,>:]+\}\}/g).map(key => key.replace(/[{}]/g, '')),
         result = {},
         max = 0,
         html = '';
 
     for (let i = 0; i < keys.length; i++) {
-        let key = keys[i].replace(/[^a-z0-9]/g, ''),
-            needName = keys[i].indexOf(':') != -1;
+        let params = keys[i].split('>'),
+            key = params[0].replace(/[^a-z0-9]/g, ''),
+            needName = params[0].indexOf(':') != -1,
+            isArray = params.length > 1;
         if (!(key in locale)) continue;
 
         let count = locale[key].length;
@@ -79,7 +111,13 @@ function buildPopup(template, props, locale) {
             let names = getLocalesNames(locale, key, j).filter(name => name in props);
             if (names.length == 0) continue;
             if (!result[keys[i]]) result[keys[i]] = [];
-            result[keys[i]].push((needName ? names[0] + ': ' : '') + `<span type='value'>${props[names[0]]}</span>`)
+
+            if (isArray) {
+                let _template = `<div>${params[1].split(',').reduce((p, c) => p += `<div>{{${c}}}</div>`, '')}</div>`;
+                result[keys[i]].push(JSON.parse(props[names[0]]).reduce((p, c) => p += buildPopup(_template, c, locale), ''))
+            } else {
+                result[keys[i]].push((needName ? names[0] + ': ' : '') + `<span type='value'>${props[names[0]]}</span>`)
+            }
         }
     }
 
@@ -91,7 +129,7 @@ function buildPopup(template, props, locale) {
         }
         html += `<div lang='${j}'>${temp}</div>`
     }
-    return html;
+    return html.replace(/<div><\/div>/g, '');
 }
 
 function isExistedLayer(id) {
@@ -102,6 +140,43 @@ function isVisibleLayer(id) {
     if (!isExistedLayer(id)) return false;
     let visibility = window.DataMap.getLayoutProperty(id, 'visibility')
     return typeof visibility === 'undefined' || visibility == 'visible';
+}
+
+function getVisibleLayers() {
+    let ids = window.DataMap.getStyle().layers
+        .map(v => v.id)
+        .filter((v, i, l) => l.indexOf(v) == i)
+        .filter(v => /[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}/.test(v))
+        .filter(v => DataMap.getLayoutProperty(v, 'visibility') !== 'none'),
+        res = {};
+    for (let type in window.DataCatalogue) {
+        if ('groups' in window.DataCatalogue[type]) {
+            for (let sub in window.DataCatalogue[type].groups) {
+                if ('list' in window.DataCatalogue[type].groups[sub]) {
+                    let _ids = ids.filter(v => v in window.DataCatalogue[type].groups[sub].list);
+                    if (_ids.length) {
+                        if (!(type in res)) res[type] = {};
+                        res[type][sub] = _ids;
+                    }
+                }
+            }
+        }
+    }
+    return res;
+}
+
+function getCurrentStatus() {
+    let {
+        lat,
+        lng
+    } = window.DataMap.getCenter(),
+        layers = getVisibleLayers();
+
+    return {
+        layers: Object.keys(layers).map(c => `${c}>${Object.keys(layers[c]).map(v => `${v}:${layers[c][v].join(',')}`).join(';')}`).join('|'),
+        center: [lng, lat].map(v => parseFloat(v.toFixed(5))),
+        zoom: window.DataMap.getZoom()
+    }
 }
 
 function toggleLayer(type, sub, id) {
@@ -120,65 +195,105 @@ function hideLayer(id) {
     window.DataMap.setLayoutProperty(id, 'visibility', 'none')
 }
 
-function drawLayers() {
-    $("#layers-container").remove()
-    let $layer = $('<div id="layers-container"></div>'),
-        addLocale = ($elem, data) => {
-            Language.map((lang, i) => $elem.append(`<span lang='${i}'>${data[lang.lang]}</span>`))
-        }
-    for (let catalogue in window.DataCatalogue) {
-        let $cat = $(`<div class='catalogue'></div>`),
-            $parent = $(`<div class='parent'></div>`);
-        $parent.appendTo($cat)
-        addLocale($parent, window.DataCatalogue[catalogue])
+let redrawTimeout = 0;
 
-        $cat.appendTo($layer)
-        if (!window.DataCatalogue[catalogue].groups) {
-            let $img = $(`<img src='img/external.svg' />`);
-            $parent.append($img)
-            $parent.on('click', () => location.href = `?type=${catalogue}`)
-            continue;
+function drawLayers(immediate = false) {
+    clearTimeout(redrawTimeout);
+    if (!immediate) {
+        redrawTimeout = setTimeout(() => drawLayers(true), 500);
+        return;
+    }
+    let $layer = $('#layers-container');
+    if ($layer.length == 0) {
+        $layer = $('<div id="layers-container"></div>');
+        $('#map').append($layer);
+    }
+    let addLocale = ($elem, data) => {
+            Language.map((lang, i) => $elem.append(`<span lang='${i}'>${data[lang.lang]}</span>`))
+        },
+        hasGroups = (catalogue) => !!window.DataCatalogue[catalogue].groups,
+        hasList = (catalogue, group) => !!window.DataCatalogue[catalogue].groups[group].list,
+        handleRow = ($div, catalogue, group = false) => {
+            let check = group ? hasList : hasGroups,
+                act = group ? getSubType : getType,
+                fn = () => {
+                    $div.toggleClass('expand')
+                    if (!check(catalogue, group)) {
+                        act(catalogue, group).then(() => {
+                            $div.removeClass('download')
+                            drawLayers();
+                        })
+                    }
+                };
+            $div.on('click', fn)
+            $div.attr('data-uuid', catalogue + (group ? `-${group}` : ''))
+            if (!check(catalogue, group)) {
+                $div.addClass('download')
+                return false;
+            }
+            return true;
+        };
+    for (let catalogue in window.DataCatalogue) {
+        let $parent = $layer.find(`.parent[data-uuid="${catalogue}"]`),
+            $children = $layer.find(`.parent[data-uuid="${catalogue}"] + div`);
+
+        if ($parent.length == 0) {
+            let $cat = $(`<div class='catalogue'></div>`)
+            $parent = $(`<div class='parent'></div>`);
+            $children = $('<div></div>');
+            $cat.append($parent);
+            $cat.append($children);
+            addLocale($parent, window.DataCatalogue[catalogue])
+            $layer.append($cat);
+            if (!handleRow($parent, catalogue)) continue;
         }
+
+        if (hasGroups(catalogue)) $parent.removeClass('download');
 
         for (let group in window.DataCatalogue[catalogue].groups) {
-            let $child = $(`<div class='child'></div>`)
-            $child.appendTo($cat)
-            addLocale($child, window.DataCatalogue[catalogue].groups[group])
+            let $child = $children.find(`.child[data-uuid="${catalogue}-${group}"]`),
+                $lists = $children.find(`.child[data-uuid="${catalogue}-${group}"] + div`);
 
-            if (!window.DataCatalogue[catalogue].groups[group].list) {
-                let $img = $(`<img src='img/external.svg' />`);
-                $child.append($img)
-                $child.on('click', () => location.href = `?type=${catalogue}&sub=${group}`)
-                continue;
+            if ($child.length == 0) {
+                $child = $(`<div class='child'></div>`);
+                $lists = $('<div></div>');
+                $children.append($child);
+                $children.append($lists);
+                addLocale($child, window.DataCatalogue[catalogue].groups[group])
+                if (!handleRow($child, catalogue, group)) continue;
             }
 
+            if (hasList(catalogue, group)) $child.removeClass('download');
+
             for (let list in window.DataCatalogue[catalogue].groups[group].list) {
-                let $list = $(`<div class='list'></div>`),
-                    $img = $(`<img />`),
+                let uuidList = `${catalogue}-${group}-${list}`,
+                    $list = $lists.find(`.list[data-uuid="${uuidList}"]`),
                     updateStatus = () => {
                         $list.removeClass('visible download hidden')
-                        let src = 'hidden';
+                        let src = '';
                         if (!isExistedLayer(list)) {
                             src = 'download'
-                        } else if (isVisibleLayer(list)) {
-                            src = 'visible'
+                        } else if (!isVisibleLayer(list)) {
+                            src = 'hidden'
                         }
                         $list.addClass(src)
-                        $img.attr('src', `img/${src}.svg`)
                     };
-                $list.appendTo($cat)
-                $list.on('click', () => {
-                    toggleLayer(catalogue, group, list)
-                    updateStatus()
-                })
 
-                updateStatus()
-                $list.append($img)
-                addLocale($list, window.DataCatalogue[catalogue].groups[group].list[list])
+                if ($list.length == 0) {
+                    $list = $(`<div class='list'></div>`);
+                    $list.attr('data-uuid', uuidList)
+                    $lists.append($list);
+                    $list.on('click', () => {
+                        toggleLayer(catalogue, group, list)
+                        updateStatus()
+                    })
+                    addLocale($list, window.DataCatalogue[catalogue].groups[group].list[list])
+                }
+
+                updateStatus();
             }
         }
     }
-    $layer.appendTo('#map')
 }
 
 let loadingTimeout = 0,
@@ -187,33 +302,25 @@ let loadingTimeout = 0,
         time: 0,
     };
 
-function loadMap(type, sub, idx) {
-    type = type && type in window.DataCatalogue ? type : Object.keys(window.DataCatalogue)[0];
-    sub = sub && sub in window.DataCatalogue[type].groups ? sub : Object.keys(window.DataCatalogue[type].groups)[0];
-    idx = idx || 0;
-    if (!$('#title').length) {
-        let $title = $('<div id="title"></div>'),
-            $container = $('<div id="title-container"></div>'),
-            $btnToggle = $('<button class="data-map-button" id="toggle-title"></button>'),
-            $btnHide = $('<span id="collapse-title"></span>');
-        $title.append(`<div>${Language.reduce((p, c, i) => p += `<span lang='${i}'>${c.title}${window.DataCatalogue[type][c.lang]} - ${window.DataCatalogue[type].groups[sub][c.lang]}</span>`, '')}</div>`)
-        $title.append(`<span id='attribution'>${Language.reduce((p, c, i) => p += `<span lang='${i}'>${c.credit}</span>`,'')}</span><br><span id='copyright'>${Language.reduce((p, c, i) => p+=`<span lang='${i}'>${c.copyright}</span>`,'')}</span>`);
-
-        $btnToggle.on('click', () => {
-            $container.toggleClass('active')
-        })
-
-        $btnHide.on('click', () => {
-            $container.addClass('force-collapse')
-        })
-
-        $title.append($btnHide);
-        $container.append($title);
-        $container.append($btnToggle);
-        $('#map').append($container);
+function loadMap(_type, _sub, _idx) {
+    let type = _type && _type in window.DataCatalogue ? _type : Object.keys(window.DataCatalogue)[0];
+    let sub = _sub && window.DataCatalogue[type].groups && _sub in window.DataCatalogue[type].groups ? _sub : window.DataCatalogue[type].groups ? Object.keys(window.DataCatalogue[type].groups)[0] : false;
+    let idx = _idx || 0;
+    if (sub === false) {
+        getType(type)
+            .then(() => {
+                let _id = `${_type}-${_sub}-${_idx}`;
+                if (retryCount.id == _id) retryCount.time++
+                else {
+                    retryCount.id = _id;
+                    retryCount.time = 1;
+                }
+                if (retryCount.time < 3) loadMap(_type, _sub, _idx)
+            })
+        return;
     }
+    clearTimeout(loadingTimeout)
     if (window.DataMapLoaded) {
-        clearTimeout(loadingTimeout)
         let config = window.DataCatalogue[type],
             locale = getLocales(type),
             addLayer = () => {
@@ -271,8 +378,22 @@ function loadMap(type, sub, idx) {
                 })
                 window.DataMap.on('click', DatasetID, (e) => {
                     let feature = e.features[0],
-                        coor = feature.geometry.coordinates.slice(),
+                        coor = feature.geometry.coordinates,
                         popup = buildPopup(config.template, feature.properties, locale);
+
+                    if (feature.geometry.type == "MultiPoint") {
+                        let maxLong = 0,
+                            minLong = 999,
+                            maxLat = 0,
+                            minLat = 999;
+                        coor.map(v => {
+                            if (v[0] > maxLong) maxLong = v[0];
+                            if (v[0] < minLong) minLong = v[0];
+                            if (v[1] > maxLat) maxLat = v[1];
+                            if (v[1] < minLat) minLat = v[1];
+                        })
+                        coor = [(maxLong + minLong) / 2, (maxLat + minLat) / 2]
+                    }
 
                     while (Math.abs(e.lngLat.lng - coor[0]) > 180) {
                         coor[0] += e.lngLat.lng > coor[0] ? 360 : -360;
@@ -310,17 +431,15 @@ function loadMap(type, sub, idx) {
                             })
                         })
                 })
+                window.DataMap.once('data', () => {
+                    if ($('#layers-container').length) drawLayers();
+                })
             };
         if (!config.groups || !(sub in config.groups)) return;
         if ('list' in config.groups[sub]) {
             addLayer()
         } else {
-            getJSON(`data/${type}/${sub}.json`)
-                .then(res => {
-                    window.DataCatalogue[type].groups[sub].list = res;
-                    addLayer()
-                    if ($('#layers-container').length) drawLayers()
-                })
+            getSubType(type, sub).then(addLayer)
         }
         return;
     } else {
@@ -337,12 +456,14 @@ function loadMap(type, sub, idx) {
 
 function grepParams(init = false) {
     let type = location.search.match(/type=([a-z]+)/),
-        sub = location.search.match(/sub=([a-z]+)/);
+        sub = location.search.match(/sub=([a-z]+)/),
+        id = location.search.match(/id=([a-z0-9-]+)/);
 
     type = type ? type[1] : false;
     sub = sub ? sub[1] : false;
+    id = id ? id[1] : false;
 
-    if (typeof gtag !== 'undefined' && init && (type || sub)) {
+    if (typeof gtag !== 'undefined' && init && (type || sub || id)) {
         if (type) gtag('event', 'change_search_type', {
             event_category: 'changing',
             event_label: type
@@ -351,18 +472,27 @@ function grepParams(init = false) {
             event_category: 'changing',
             event_label: sub
         })
+        if (id) gtag('event', 'change_search_id', {
+            event_category: 'changing',
+            event_label: id
+        })
     }
 
     return {
         type: type,
         sub: sub,
+        id: id,
     }
 }
 
 (function () {
     let $btnLang = $('<button class="data-map-button" id="toggle-language"></button>'),
         $loading = $(`<div id="loading"><div>${Language.reduce((p, c, i) => p += `<span lang="${i}">${c.loading}</span>`, '')}...</div></div>`),
-        $layers = $('<button class="data-map-button" id="toggle-layers"><img src="img/layer.svg" /></button>');
+        $layers = $('<button class="data-map-button" id="toggle-layers"><img src="img/layer.svg" /></button>'),
+        $title = $('<div id="title"></div>'),
+        $container = $('<div id="title-container"></div>'),
+        $btnToggle = $('<button class="data-map-button" id="toggle-title"></button>'),
+        $btnHide = $('<span id="collapse-title"></span>');
 
     window.DataLanguage = parseInt(sessionStorage.getItem('data-map-language') || 0) - 1;
     $('#map').attr('lang', window.DataLanguage + 1);
@@ -374,12 +504,9 @@ function grepParams(init = false) {
 
     $layers.data('open', false)
     $layers.on('click', () => {
-        if ($layers.data('open')) {
-            $('#layers-container').remove()
-        } else {
-            drawLayers()
-        }
-        $layers.data('open', !$layers.data('open'))
+        let $container = $('#layers-container');
+        if ($container.length == 0) drawLayers(true);
+        else $('#layers-container').toggleClass('hidden');
     })
     $('#map').append($layers)
     $('#map').append($loading)
@@ -391,17 +518,9 @@ function grepParams(init = false) {
             } = grepParams(true);
 
             type = type in res ? type : Object.keys(res)[0];
-            return getJSON(`data/${type}/index.json`)
+            return getType(type)
         })
-        .then(res => {
-            let id = res.id;
-            if (!(id in window.DataCatalogue)) window.DataCatalogue[id] = {};
-            window.DataCatalogue[id] = {
-                ...window.DataCatalogue[id],
-                ...res
-            }
-            return getJSON('data/locale.json')
-        })
+        .then(() => getJSON('data/locale.json'))
         .then(res => {
             window.DataLocale = res;
             window.DataMap = startMap();
@@ -410,7 +529,7 @@ function grepParams(init = false) {
                 $btnLang.appendTo('#map')
                 $btnLang.click()
 
-                let mapSvg = ['badminton', 'basketball', 'bicycle', 'child', 'disability', 'elderly', 'fitness', 'football', 'golf', 'graduation', 'help', 'horse-riding', 'hostel', 'jogging', 'swimming', 'table-tennis', 'tennis'];
+                let mapSvg = ['badminton', 'basketball', 'bicycle', 'book', 'child', 'disability', 'driving', 'elderly', 'fitness', 'football', 'golf', 'government', 'graduation', 'health', 'help', 'horse-riding', 'hostel', 'jogging', 'museum', 'outdoor', 'post', 'swimming', 'table-tennis', 'tennis', 'wifi'];
                 mapSvg.map(img => {
                     let path = `img/icon/${img}.png`;
                     window.DataMap.loadImage(path, (err, res) => {
@@ -421,16 +540,32 @@ function grepParams(init = false) {
             })
             let {
                 type,
-                sub
+                sub,
+                id
             } = grepParams();
-            loadMap(type, sub)
+            loadMap(type, sub, id)
 
             let closeLayer = () => {
-                if ($layers.data('open')) $layers.click();
+                if ($('#layers-container').length && !$('#layers-container').hasClass('hidden')) $layers.click();
                 $('#title-container').removeClass('active')
             }
             window.DataMap.on('click', closeLayer)
             window.DataMap.on('dragstart', closeLayer)
+
+            $title.append(Language.reduce((p, c, i) => p += `<div lang=${i}><div class='heading'>${c.title}</div><div class='heading'>${c.desc}</div><span class='attribution'>${c.credit}</span><br><span class='copyright'>${c.copyright}</span></div>`, ''))
+
+            $title.append($btnHide);
+            $container.append($title);
+            $container.append($btnToggle);
+            $('#map').append($container);
+
+            $btnToggle.on('click', () => {
+                $container.toggleClass('active')
+            })
+
+            $btnHide.on('click', () => {
+                $container.addClass('force-collapse')
+            })
 
             $btnLang.on('click', () => {
                 window.DataLanguage = (window.DataLanguage + 1) % Language.length;

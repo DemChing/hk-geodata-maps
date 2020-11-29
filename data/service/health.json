@@ -1,0 +1,22 @@
+{
+    "fe3738e1-c632-4724-9568-ffd41e435c02": {
+        "tc": "衛生署轄下的診所及健康中心",
+        "sc": "卫生署辖下的诊所及健康中心",
+        "en": "Clinics / Health Centres under the Department of Health"
+    },
+    "2852ec0f-719f-494e-9772-e53af3a2f5bb": {
+        "tc": "醫院管理局轄下的普通科門診診所",
+        "sc": "医院管理局辖下的普通科门诊诊所",
+        "en": "General Outpatient Clinics under The Hospital Authority"
+    },
+    "b2e8aa49-927b-45e3-9fc9-130c169c4836": {
+        "tc": "衛生教育展覽及資料中心",
+        "sc": "卫生教育展览及资料中心",
+        "en": "Health Education Exhibition and Resource Centre"
+    },
+    "25714788-aea1-4aaa-a76c-8a943513b5d0": {
+        "tc": "醫院管理局轄下的醫院",
+        "sc": "医院管理局辖下的医院",
+        "en": "Hospitals under the Hospital Authority"
+    }
+}

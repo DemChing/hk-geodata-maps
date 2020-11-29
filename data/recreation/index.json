@@ -1,0 +1,24 @@
+{
+    "id": "recreation",
+    "key": "name",
+    "groups": {
+        "accommodation": {
+            "icon": "hostel",
+            "tc": "住宿",
+            "sc": "住宿",
+            "en": "Accommodations"
+        },
+        "outdoor": {
+            "tc": "戶外活動",
+            "sc": "户外活动",
+            "en": "Outdoor Activities"
+        },
+        "other": {
+            "tc": "其他設施",
+            "sc": "其他设施",
+            "en": "Other Facilities"
+        }
+    },
+    "icon": "outdoor",
+    "template": "<div class='header'><div>{{district}} {{prop1}} {{dataset}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{opening:}}</div><div>{{email:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div><div>{{value1:}}</div><div>{{value2}}</div><div>{{value3}}</div><div class='list'>{{loop1>name,address,opening,value2}}</div></div>"
+}

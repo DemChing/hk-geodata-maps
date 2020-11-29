@@ -1,0 +1,17 @@
+{
+    "ebb49e65-1c67-41a1-b45a-2f14ebabeb85": {
+        "tc": "派遞局",
+        "sc": "派递局",
+        "en": "Delivery Offices"
+    },
+    "7f7d7abc-32a8-4c2c-b109-03d80352e7c7": {
+        "tc": "郵政局",
+        "sc": "邮政局",
+        "en": "Post Offices"
+    },
+    "63ea163e-7628-49b3-954a-511075fb3547": {
+        "tc": "郵筒",
+        "sc": "邮筒",
+        "en": "Street Posting Boxes"
+    }
+}

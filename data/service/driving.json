@@ -1,0 +1,27 @@
+{
+    "990f06bc-a4e8-4b55-bc14-ff0c5f3357ce": {
+        "tc": "出入境管制站",
+        "sc": "出入境管制站",
+        "en": "Control Points"
+    },
+    "49ecb235-13ad-4efe-9197-cd0e5d8278a7": {
+        "tc": "驗車中心",
+        "sc": "验车中心",
+        "en": "Vehicle Examination Centres"
+    },
+    "81f90955-afac-4dba-baa4-c83b8dbd3da2": {
+        "tc": "指定車輛測試中心",
+        "sc": "指定车辆测试中心",
+        "en": "Designated Car Testing Centres"
+    },
+    "6d32bbbc-794e-4116-a86d-4fcfd0d7608e": {
+        "tc": "註冊車輛維修工場",
+        "sc": "注册车辆维修工场",
+        "en": "Registered Vehicle Maintenance Workshops"
+    },
+    "54704126-fb1d-45f3-9708-67da05f7b068": {
+        "tc": "駕駛考試中心",
+        "sc": "驾驶考试中心",
+        "en": "Driving Test Centres"
+    }
+}

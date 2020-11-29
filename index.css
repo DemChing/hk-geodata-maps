@@ -40,14 +40,19 @@ canvas:focus {
     opacity: 1;
 }
 
-#title #attribution,
-#title #copyright {
+#title .attribution,
+#title .copyright {
     font-weight: initial;
     font-size: 10;
 }
 
-#title div {
+#title .heading {
+    font-size: 26px;
     margin: 10px 0;
+}
+
+#title .heading+.heading {
+    font-size: 14px;
 }
 
 #title-container #toggle-title {
@@ -176,6 +181,11 @@ span[lang] {
     text-overflow: ellipsis;
 }
 
+.mapboxgl-popup div[lang] div.list {
+    max-height: 200px;
+    overflow: hidden auto;
+}
+
 .mapboxgl-popup div[lang] div.header {
     margin-bottom: 10px;
 }
@@ -247,22 +257,62 @@ button.data-map-button:hover {
     width: 350px;
 }
 
+#layers-container.hidden {
+    display: none;
+}
+
 .catalogue .parent {
     font-size: 16;
     font-weight: 700;
     padding: 5px 0;
+}
+
+.catalogue .parent,
+.catalogue .child,
+.catalogue .list {
     cursor: pointer;
+    position: relative;
+}
+
+.catalogue .parent::after,
+.catalogue .child::after,
+.catalogue .list::after {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    content: ' ';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('img/expand.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.catalogue .parent.download::after,
+.catalogue .child.download::after,
+.catalogue .list.download::after {
+    background-image: url('img/download.svg');
+}
+
+.catalogue .parent.expand:not(.download)::after,
+.catalogue .child.expand:not(.download)::after {
+    background-image: url('img/collapse.svg');
+}
+
+.catalogue .parent:not(.expand)+div,
+.catalogue .child:not(.expand)+div {
+    display: none;
 }
 
 .catalogue .child {
     font-size: 14;
     padding: 5px 0 0 10px;
-    cursor: pointer;
 }
 
 .catalogue .list {
     padding: 5px 0 0 30px;
-    cursor: pointer;
 }
 
 .catalogue .list.download {
@@ -277,6 +327,14 @@ button.data-map-button:hover {
     font-weight: bold;
     color: #f37;
     text-decoration: line-through;
+}
+
+.catalogue .list::after {
+    background-image: url('img/visible.svg');
+}
+
+.catalogue .list.hidden::after {
+    background-image: url('img/hidden.svg');
 }
 
 .catalogue img {
@@ -296,7 +354,8 @@ button.data-map-button:hover {
     }
 
     #title-container.active #title {
-        width: 300px;
+        width: calc(100% - 50px);
+        min-width: unset;
         display: block;
     }
 

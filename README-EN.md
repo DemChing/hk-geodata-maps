@@ -8,6 +8,8 @@ Current data:
 1. Education - Kindergartens, primary and secondary schools
 2. Sports - Ball games, water sports and sports centre
 3. Social welfare - Services for disabilities, minoriy community, child and elderly
+4. Recreation - Accommodations, country park, open space
+5. Public services - Government offices, post service
 
 ## Demo
 [Demo](https://demching.github.io/hk-geodata-maps/)

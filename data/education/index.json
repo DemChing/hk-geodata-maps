@@ -25,5 +25,5 @@
         }
     },
     "icon": "graduation",
-    "template": "<div class='header'><div>{{district}} {{prop1}} {{prop2}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{session}} {{gender}}</div><div>{{prop3:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div></div>"
+    "template": "<div class='header'><div>{{district}} {{prop1}} {{prop2}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{session}} {{gender}}</div><div>{{value1:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div></div>"
 }

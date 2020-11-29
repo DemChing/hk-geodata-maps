@@ -1,0 +1,45 @@
+{
+    "41b1ee77-984d-4651-8876-0084ecf372df": {
+        "tc": "兒童遊戲室",
+        "sc": "儿童游戏室",
+        "en": "Children's Play Rooms"
+    },
+    "7bd8e9d4-26c8-449b-9cef-601c8b1d3682": {
+        "icon": "book",
+        "tc": "圖書館",
+        "sc": "图书馆",
+        "en": "Libraries"
+    },
+    "d9f77749-eac6-4d55-89f1-873f1bf1ce97": {
+        "icon": "museum",
+        "tc": "博物館",
+        "sc": "博物馆",
+        "en": "Museums"
+    },
+    "31d4b251-2d79-45b9-abdb-0d938ca4b9a6": {
+        "tc": "康樂場地",
+        "sc": "康乐场地",
+        "en": "Recreation Grounds"
+    },
+    "fc6f0f06-14f0-4ba8-9446-3859d4b90250": {
+        "tc": "表演場地",
+        "sc": "表演场地",
+        "en": "Performing Venues"
+    },
+    "bbea81e1-135b-49b1-9067-8c99f56fa985": {
+        "icon": "wifi",
+        "tc": "Wi-Fi.HK 位置",
+        "sc": "Wi-Fi.HK 位置",
+        "en": "Wi-Fi.HK Locations"
+    },
+    "30db44ed-1e1f-4839-998d-0ad124fe7cba": {
+        "tc": "公眾設施（不包括公眾休憩空間）",
+        "sc": "公众设施（不包括公众休憩空间）",
+        "en": "Public Facilities (excluding Public Open Space)"
+    },
+    "48e12cef-cbfd-4509-9c70-7ad31250bef5": {
+        "tc": "公眾休憩空間",
+        "sc": "公众休憩空间",
+        "en": "Public Open Space"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "c17189ae-26e9-47ba-8157-13470e107e3f": {
+        "tc": "床位寓所(持牌)",
+        "sc": "床位寓所(持牌)",
+        "en": "Bedspace Apartments (Licensed)"
+    },
+    "512bd9ef-4411-4499-baa2-d1a666cba155": {
+        "tc": "賓館(持牌)",
+        "sc": "宾馆(持牌)",
+        "en": "Guesthouses (Licensed)"
+    },
+    "ab4d1fac-cca2-4164-add9-59c6e838e1d3": {
+        "tc": "度假營",
+        "sc": "度假营",
+        "en": "Holiday Camps"
+    },
+    "4de3e3db-ea5c-4a65-b268-91efa1df4bce": {
+        "tc": "度假營(持牌)",
+        "sc": "度假营(持牌)",
+        "en": "Holiday Camps (Licensed)"
+    },
+    "3363c551-4ed9-4905-b92b-5becf68a432d": {
+        "tc": "度假屋(持牌)",
+        "sc": "度假屋(持牌)",
+        "en": "Holiday Flats (Licensed)"
+    },
+    "cbdfed29-e3ed-43bd-985e-e53027f27425": {
+        "tc": "酒店(持牌)",
+        "sc": "酒店(持牌)",
+        "en": "Hotels (Licensed)"
+    }
+}

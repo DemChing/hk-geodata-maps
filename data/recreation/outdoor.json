@@ -1,0 +1,47 @@
+{
+    "93da2d9d-d45d-4d4b-b7ba-b5ed310c4930": {
+        "tc": "燒烤區（漁農署）",
+        "sc": "烧烤区（渔农署）",
+        "en": "Barbecue Areas (AFCD)"
+    },
+    "c4aabc15-156c-4aa5-ba6e-145f62972160": {
+        "tc": "燒烤區（康文署）",
+        "sc": "烧烤区（康文署）",
+        "en": "Barbecue Areas (LCSD)"
+    },
+    "8d6eb5e8-13be-4b79-b0c2-19f647009c54": {
+        "tc": "露營地點",
+        "sc": "露营地点",
+        "en": "Camp Sites"
+    },
+    "6bbc334b-cdb1-48ce-8a78-c58979327124": {
+        "tc": "郊野公園",
+        "sc": "郊野公园",
+        "en": "Country Parks"
+    },
+    "3474c0cf-c44f-46b8-883b-0fe99547ef5f": {
+        "tc": "海岸公園",
+        "sc": "海岸公园",
+        "en": "Marine Parks"
+    },
+    "dfdfcd17-8772-44de-91c2-6a788094ecf7": {
+        "tc": "海岸保護區",
+        "sc": "海岸保护区",
+        "en": "Marine Reserve"
+    },
+    "167c426a-278f-4ce6-b8f5-824de4e2fc23": {
+        "tc": "郊野公園飲水機",
+        "sc": "郊野公园饮水机",
+        "en": "Country Park Water Dispensers"
+    },
+    "5901dbab-6f89-4c41-8eec-e1f8ea9a7966": {
+        "tc": "公園及動植物公園",
+        "sc": "公园及动植物公园",
+        "en": "Parks, Zoos and Gardens"
+    },
+    "dda880e5-08fc-41e9-be2a-571f1e8c5c2f": {
+        "tc": "郊野公園訪客中心",
+        "sc": "郊野公园访客中心",
+        "en": "Visitor Centres of Country Parks"
+    }
+}

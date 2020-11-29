@@ -4,6 +4,16 @@
         "sc": "教育",
         "en": "Education"
     },
+    "recreation": {
+        "tc": "康樂及文化",
+        "sc": "康乐及文化",
+        "en": "Recreation and Culture"
+    },
+    "service": {
+        "tc": "公共服務",
+        "sc": "公共服务",
+        "en": "Public Service"
+    },
     "sport": {
         "tc": "運動",
         "sc": "运动",

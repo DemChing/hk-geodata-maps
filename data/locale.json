@@ -5,28 +5,28 @@
             ["數據集"]
         ],
         "name": [
-            ["Facility Name"],
-            ["設施名稱"]
+            ["Facility Name", "nameEN", "Name", "requirementsUnderLeaseEN"],
+            ["設施名稱", "nameZH", "名稱", "requirementsUnderLeaseZH"]
         ],
         "address": [
-            ["Address"],
-            ["地址"]
+            ["Address", "locationEN"],
+            ["地址", "locationZH"]
         ],
         "gender": [
             ["Students Gender"],
             ["就讀學生性別"]
         ],
         "district": [
-            ["District"],
-            ["分區", "地區"]
+            ["District", "relevantDistrictCouncilEN", "Relevant District Council"],
+            ["分區", "地區", "relevantDistrictCouncilZH", "所屬區議會"]
         ],
         "opening": [
-            ["Opening Hours"],
-            ["開放時間"]
+            ["Opening Hours", "openingHoursEN"],
+            ["開放時間", "openingHoursZH"]
         ],
         "telephone": [
-            ["Telephone"],
-            ["聯絡電話"]
+            ["Telephone", "Support Hotline"],
+            ["聯絡電話", "支援熱線"]
         ],
         "fax": [
             ["Fax Number"],
@@ -37,8 +37,8 @@
             ["網頁"]
         ],
         "email": [
-            ["Email Address"],
-            ["電郵地址"]
+            ["Email Address", "Support Email"],
+            ["電郵地址", "支援電郵"]
         ]
     },
     "education": {
@@ -54,7 +54,7 @@
             ["School Level"],
             ["學校類型"]
         ],
-        "prop3": [
+        "value1": [
             ["Religion"],
             ["宗教"]
         ]
@@ -63,6 +63,31 @@
         "prop1": [
             ["Facility Type"],
             ["設施種類"]
+        ]
+    },
+    "recreation": {
+        "prop1": [
+            ["Facility Type", "Venue Type", "ownershipEN", "Ownership"],
+            ["設施種類", "場所類別", "ownershipZH", "業權"]
+        ],
+        "prop2": [
+            ["Organisation"],
+            ["參與機構"]
+        ],
+        "value1": [
+            ["Number of Hotspots", "Accessibility / Location"],
+            ["熱點數量", "前往方法 / 所處位置"]
+        ],
+        "value2": [
+            ["Provision of Sheltered Seating", "briefDescriptionEN"],
+            ["提供有蓋座位", "briefDescriptionZH"]
+        ],
+        "value3":[
+            ["Provision of Barrier-free-access Facilities"],
+            ["提供無障礙通道設施"]
+        ],
+        "loop1": [
+            ["items"]
         ]
     }
 }

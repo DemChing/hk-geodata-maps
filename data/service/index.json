@@ -1,0 +1,31 @@
+{
+    "id": "service",
+    "key": "name",
+    "groups": {
+        "driving": {
+            "icon": "driving",
+            "tc": "駕駛",
+            "sc": "驾驶",
+            "en": "Driving"
+        },
+        "government": {
+            "tc": "政府辦事處",
+            "sc": "政府办事处",
+            "en": "Government Offices"
+        },
+        "postal": {
+            "icon": "post",
+            "tc": "郵政",
+            "sc": "邮政",
+            "en": "Post"
+        },
+        "health": {
+            "icon": "health",
+            "tc": "公共衛生",
+            "sc": "公共卫生",
+            "en": "Public Health"
+        }
+    },
+    "icon": "government",
+    "template": "<div class='header'><div>{{district}} {{dataset}}</div><h3>{{name}}</h3></div><div class='body'><div>{{address}}</div><div>{{opening:}}</div><div>{{email:}}</div><div>{{telephone:}}</div><div>{{fax:}}</div><div>{{website:}}</div></div>"
+}
