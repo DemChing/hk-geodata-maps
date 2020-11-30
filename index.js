@@ -494,7 +494,7 @@ function grepParams(init = false) {
         $btnToggle = $('<button class="data-map-button" id="toggle-title"></button>'),
         $btnHide = $('<span id="collapse-title"></span>');
 
-    window.DataLanguage = parseInt(sessionStorage.getItem('data-map-language') || 0) - 1;
+    window.DataLanguage = parseInt(sessionStorage.getItem('data-map-language') || /zh($|-)/.test(navigator.language) ? 1 : 0) - 1;
     $('#map').attr('lang', window.DataLanguage + 1);
     $('#map').on('contextmenu', (e) => {
         e.stopImmediatePropagation();
